@@ -127,5 +127,4 @@ arr[126]="n\nRepeat the latest \"/\" or \"?\" [count] times.\n"
 arr[127]="N\nRepeat the latest \"/\" or \"?\" [count] times in opposite direction.\n"
 
 rand=$[$RANDOM % ${#arr[@]}]
-echo ${arr[$rand]}
-printf "$arr[$rand]"
+printf "${arr[$rand]}"
