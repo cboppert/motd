@@ -11,4 +11,9 @@ To use this simply append
     fi
 
 to your .bashrc or .zshrc (or other shell configuration file which is executed on terminal login).
-New terminals will display a message with a ViM or TMUX tip
+New terminals will display a message with a ViM or TMUX tip. Replace $HOME/workspace/motd with the path
+to the motd.sh file if needed.
+
+Make sure the script is set to executable!
+
+    chmod +x motd.sh
