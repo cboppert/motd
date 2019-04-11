@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arr[1]=":q[uit]nQuit Vim. This fails when changes have been ma['i']e.\n"
+arr[1]=":q[uit]\nQuit Vim. This fails when changes have been ma['i']e.\n"
 arr[2]=":q[uit]!\nQuit without writing.\n"
 arr[3]=":q[uit]\nQuit Vim.  This fails when changes have been made.\n"
 arr[4]=":q[uit]!\nQuit without writing.\n"
