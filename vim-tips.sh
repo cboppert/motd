@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VIM_TIPS[1]=":q[uit]nQuit Vim. This fails when changes have been ma['i']e.\n"
+VIM_TIPS[1]=":q[uit]\nQuit Vim. This fails when changes have been ma['i']e.\n"
 VIM_TIPS[2]=":q[uit]!\nQuit without writing.\n"
 VIM_TIPS[3]=":q[uit]\nQuit Vim.  This fails when changes have been made.\n"
 VIM_TIPS[4]=":q[uit]!\nQuit without writing.\n"
