@@ -17,3 +17,9 @@ to the motd.sh file if needed.
 Make sure the script is set to executable!
 
     chmod +x motd.sh
+
+## ViM
+Cheatsheet from - https://www.fprintf.net/vimCheatSheet.html
+
+## Tmux
+Cheatsheet from - https://tmuxcheatsheet.com/
