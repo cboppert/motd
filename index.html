@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description"
+              content="Latest shortcuts, quick reference, examples for tmux terminal multiplexer which runs on Linux, OS X, OpenBSD, FreeBSD, NetBSD, etc...">
+        <meta name="keywords"
+              content="tmux,terminal multiplexer,cheatsheet,tmux command,tmux config,tmux examples,tmux linux,tmux ubuntu">
+        <link rel="icon" href="/favicon.ico">
+
+        <title>Tmux Cheat Sheet & Quick Reference</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/rrssb.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <style>
+body {
+    min-height: 2000px;
+    padding-top: 70px;
+}
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #444;
+        }
+
+        h2 {
+            font-size: 24px;
+            padding: 8px 0;
+            text-align: center;
+            margin: 10px 0;
+            color: #444;
+            border-radius: 4px;
+        }
+        .qrcode_wrapper {position: absolute;right:0;font-size: 10px;width:64px;top: -20px;line-height: 14px;}
+        .qrcode_wrapper {}
+        .qrcode_wrapper .qrcode img {}
+        .cheatsheet {line-height: 24px;}
+        .cheatsheet .prefix {
+            margin-right: 20px;
+        }
+        .kbd-margin {margin-right:20px;}
+        .cheatsheet .cmd {
+            background: #333;
+            font-size: 22px;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 0 0 5px;
+        }
+
+        .cheatsheet .tmuxcmd {
+            background: #294904;
+        }
+
+        .cheatsheet .cmd .fa-dollar {
+            font-size: 21px;
+            font-weight: normal;
+        }
+
+        .cheatsheet p {
+            font-size: 16px;
+            margin: 5px 0 17px 0;
+            color: #666;
+        }
+
+        .cheatsheet .shortcut {
+            font-size: 22px;
+            color: #333;
+            margin: 0 0 5px;
+        }
+
+        .cheatsheet .shortcut kbd {
+            color: #fff;
+            background: #333;
+            border-radius: 4px;
+            box-shadow: 2px 2px 2px #aaa;
+            /*font-size: 22px;*/
+            padding: 5px 10px;
+            line-height: 33px;
+        }
+        .row.social {margin-bottom: 10px;}
+        .noselect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        #cheat-search-input{
+            margin:20px 0 10px 0;
+            padding: 3px;
+            border: solid 1px #E4E4E4;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+        #cheat-search-input input{
+            border: 0;
+            box-shadow: none;
+            color: #777;
+        }
+
+        #cheat-search-input button{
+            margin: 2px 0 0 0;
+            background: none;
+            box-shadow: none;
+            border: 0;
+            color: #777;
+            padding: 0 8px 0 10px;
+            border-left: solid 1px #ccc;
+        }
+
+        #cheat-search-input button:hover{
+            border: 0;
+            box-shadow: none;
+            border-left: solid 1px #ccc;
+        }
+
+        #cheat-search-input .glyphicon-search{
+            font-size: 23px;
+        }
+
+        </style>
+
+        <!-- jQuery Version 1.11.0 -->
+        <script src="js/jquery-1.11.0.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- QR code   -->
+        <script src="js/qrcode.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+        <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+        <script src="/js/search.js"></script>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-55655065-1', 'auto');
+ga('send', 'pageview');
+
+        </script>
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Tmux Cheat Sheet</a>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/tmux-plugins-tools/">Plugins & Tools</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container" style="margin-bottom:80px">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="position: relative">Tmux Cheat Sheet & Quick Reference<span class="qrcode_wrapper"><span class="qrcode" id="qrcode"></span>Mobile visit</span></h1>
+                    <script type="text/javascript">
+                        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                            text: window.location.href + "?rf=qrcode",
+                            width: 64,
+                            height: 64,
+                            colorDark: "#444",
+                            colorLight: "#ffffff",
+                            correctLevel: QRCode.CorrectLevel.M
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row social">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <!-- Buttons start here. Copy this ul to your document. -->
+                    <ul class="rrssb-buttons">
+
+                        <li class="rrssb-facebook">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftmuxcheatsheet.com%2F" target="_blank"><span
+                                                                                                                       class="rrssb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 29 29">
+                                        <path
+                                            d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"></path>
+                                    </svg></span><span class="rrssb-text">facebook</span></a>
+                        </li>
+
+                        <li class="rrssb-twitter">
+                            <a href="https://twitter.com/intent/tweet?text=Tmux+Cheat+Sheet+%26+Quick+Reference+https%3A%2F%2Ftmuxcheatsheet.com%2F"
+                               target="_blank"><span class="rrssb-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewbox="0 0 28 28">
+                                       <path
+                                           d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62c-3.122.162-6.22-.646-8.86-2.32 2.702.18 5.375-.648 7.507-2.32-2.072-.248-3.818-1.662-4.49-3.64.802.13 1.62.077 2.4-.154-2.482-.466-4.312-2.586-4.412-5.11.688.276 1.426.408 2.168.387-2.135-1.65-2.73-4.62-1.394-6.965C5.574 7.816 9.54 9.84 13.802 10.07c-.842-2.738.694-5.64 3.434-6.48 2.018-.624 4.212.043 5.546 1.682 1.186-.213 2.318-.662 3.33-1.317-.386 1.256-1.248 2.312-2.4 2.942 1.048-.106 2.07-.394 3.02-.85-.458 1.182-1.343 2.15-2.48 2.71z"></path>
+                                   </svg></span><span class="rrssb-text">twitter</span></a>
+                        </li>
+
+                        <li class="rrssb-reddit">
+                            <a href="http://www.reddit.com/submit?url=https%3A%2F%2Ftmuxcheatsheet.com%2F&title=Tmux+Cheat+Sheet+%26+Quick+Reference" target="_blank"><span
+                                                                                                                                                      class="rrssb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewbox="0 0 28 28">
+                                        <path
+                                            d="M11.794 15.316c0-1.03-.835-1.895-1.866-1.895-1.03 0-1.893.866-1.893 1.896s.863 1.9 1.9 1.9c1.023-.016 1.865-.916 1.865-1.9zM18.1 13.422c-1.03 0-1.895.864-1.895 1.895 0 1 .9 1.9 1.9 1.865 1.03 0 1.87-.836 1.87-1.865-.006-1.017-.875-1.917-1.875-1.895zM17.527 19.79c-.678.68-1.826 1.007-3.514 1.007h-.03c-1.686 0-2.834-.328-3.51-1.005-.264-.265-.693-.265-.958 0-.264.265-.264.7 0 1 .943.9 2.4 1.4 4.5 1.402.005 0 0 0 0 0 .005 0 0 0 0 0 2.066 0 3.527-.46 4.47-1.402.265-.264.265-.693.002-.958-.267-.334-.688-.334-.988-.043z"></path>
+                                        <path
+                                            d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237-.792 0-1.517.287-2.08.76-2.04-1.294-4.647-2.068-7.44-2.218l1.484-4.69 4.062.955c.07 1.4 1.3 2.6 2.7 2.555 1.488 0 2.695-1.208 2.695-2.695C25.88 3.2 24.7 2 23.2 2c-1.06 0-1.98.616-2.42 1.508l-4.633-1.09c-.344-.082-.693.117-.803.454l-1.793 5.7C10.55 8.6 7.7 9.4 5.6 10.75c-.594-.45-1.3-.75-2.1-.72-1.785 0-3.237 1.45-3.237 3.2 0 1.1.6 2.1 1.4 2.69-.04.27-.06.55-.06.83 0 2.3 1.3 4.4 3.7 5.9 2.298 1.5 5.3 2.3 8.6 2.325 3.227 0 6.27-.825 8.57-2.325 2.387-1.56 3.7-3.66 3.7-5.917 0-.26-.016-.514-.05-.768.965-.465 1.577-1.565 1.577-2.698zm-4.52-9.912c.74 0 1.3.6 1.3 1.3 0 .738-.6 1.34-1.34 1.34s-1.343-.602-1.343-1.34c.04-.655.596-1.255 1.396-1.3zM1.646 13.3c0-1.038.845-1.882 1.883-1.882.31 0 .6.1.9.21-1.05.867-1.813 1.86-2.26 2.9-.338-.328-.57-.728-.57-1.26zm20.126 8.27c-2.082 1.357-4.863 2.105-7.83 2.105-2.968 0-5.748-.748-7.83-2.105-1.99-1.3-3.087-3-3.087-4.782 0-1.784 1.097-3.484 3.088-4.784 2.08-1.358 4.86-2.106 7.828-2.106 2.967 0 5.7.7 7.8 2.106 1.99 1.3 3.1 3 3.1 4.784C24.86 18.6 23.8 20.3 21.8 21.57zm4.014-6.97c-.432-1.084-1.19-2.095-2.244-2.977.273-.156.59-.245.928-.245 1.036 0 1.9.8 1.9 1.9-.016.522-.27 1.022-.57 1.327z"></path>
+                                    </svg></span><span class="rrssb-text">reddit</span></a></li>
+
+                                    <li class="rrssb-linkedin">
+                                        <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftmuxcheatsheet.com%2F&title=Tmux+Cheat+Sheet+%26+Quick+Reference"
+                                           target="_blank"><span class="rrssb-icon">
+                                               <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 28 28">
+                                                   <path
+                                                       d="M25.424 15.887v8.447h-4.896v-7.882c0-1.98-.71-3.33-2.48-3.33-1.354 0-2.158.91-2.514 1.802-.13.315-.162.753-.162 1.194v8.216h-4.9s.067-13.35 0-14.73h4.9v2.087c-.01.017-.023.033-.033.05h.032v-.05c.65-1.002 1.812-2.435 4.414-2.435 3.222 0 5.638 2.106 5.638 6.632zM5.348 2.5c-1.676 0-2.772 1.093-2.772 2.54 0 1.42 1.066 2.538 2.717 2.546h.032c1.71 0 2.77-1.132 2.77-2.546C8.056 3.593 7.02 2.5 5.344 2.5h.005zm-2.48 21.834h4.896V9.604H2.867v14.73z"></path>
+                                               </svg></span><span class="rrssb-text">linkedin</span></a>
+                                    </li>
+
+                                    <li class="rrssb-googleplus">
+                                        <a href="https://plus.google.com/share?url=Tmux+Cheat+Sheet+%26+Quick+Reference+https%3A%2F%2Ftmuxcheatsheet.com%2F"
+                                           target="_blank"><span class="rrssb-icon">
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+                                                   <path
+                                                       d="M21 8.29h-1.95v2.6h-2.6v1.82h2.6v2.6H21v-2.6h2.6v-1.885H21V8.29zM7.614 10.306v2.925h3.9c-.26 1.69-1.755 2.925-3.9 2.925-2.34 0-4.29-2.016-4.29-4.354s1.885-4.353 4.29-4.353c1.104 0 2.014.326 2.794 1.105l2.08-2.08c-1.3-1.17-2.924-1.883-4.874-1.883C3.65 4.586.4 7.835.4 11.8s3.25 7.212 7.214 7.212c4.224 0 6.953-2.988 6.953-7.082 0-.52-.065-1.104-.13-1.624H7.614z"></path>
+                                               </svg></span><span class="rrssb-text">google+</span></a>
+                                    </li>
+
+                                    <li class="rrssb-tumblr"><a
+                                        href="http://tumblr.com/share/link?url=https%3A%2F%2Ftmuxcheatsheet.com%2F&name=Tmux+Cheat+Sheet+%26+Quick+Reference" target="_blank"><span
+                                                                                                                                                              class="rrssb-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 28 28">
+                                                <path
+                                                    d="M18.02 21.842c-2.03.052-2.422-1.396-2.44-2.446v-7.294h4.73V7.874H15.6V1.592h-3.714s-.167.053-.182.186c-.218 1.935-1.144 5.33-4.988 6.688v3.637h2.927v7.677c0 2.8 1.7 6.7 7.3 6.6 1.863-.03 3.934-.795 4.392-1.453l-1.22-3.54c-.52.213-1.415.413-2.115.455z"></path>
+                                            </svg></span><span class="rrssb-text">tumblr</span></a></li>
+
+                                            <li class="rrssb-whatsapp">
+                                                <a href="whatsapp://send?text=Tmux+Cheat+Sheet+%26+Quick+Reference+https%3A%2F%2Ftmuxcheatsheet.com%2F" target="_blank"
+                                                                                                                                                        data-action="share/whatsapp/share"><span class="rrssb-icon">
+                                                                                                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox="0 0 90 90">
+                                                                                                                                                                <path
+                                                                                                                                                                    d="M90 43.84c0 24.214-19.78 43.842-44.182 43.842a44.256 44.256 0 0 1-21.357-5.455L0 90l7.975-23.522a43.38 43.38 0 0 1-6.34-22.637C1.635 19.63 21.415 0 45.818 0 70.223 0 90 19.628 90 43.84zM45.818 6.983c-20.484 0-37.146 16.535-37.146 36.86 0 8.064 2.63 15.533 7.076 21.61l-4.64 13.688 14.274-4.537A37.122 37.122 0 0 0 45.82 80.7c20.48 0 37.145-16.533 37.145-36.857S66.3 6.983 45.818 6.983zm22.31 46.956c-.272-.447-.993-.717-2.075-1.254-1.084-.537-6.41-3.138-7.4-3.495-.993-.36-1.717-.54-2.438.536-.72 1.076-2.797 3.495-3.43 4.212-.632.72-1.263.81-2.347.27-1.082-.536-4.57-1.672-8.708-5.332-3.22-2.848-5.393-6.364-6.025-7.44-.63-1.076-.066-1.657.475-2.192.488-.482 1.084-1.255 1.625-1.882.543-.628.723-1.075 1.082-1.793.363-.718.182-1.345-.09-1.884-.27-.537-2.438-5.825-3.34-7.977-.902-2.15-1.803-1.793-2.436-1.793-.63 0-1.353-.09-2.075-.09-.722 0-1.896.27-2.89 1.344-.99 1.077-3.788 3.677-3.788 8.964 0 5.288 3.88 10.397 4.422 11.113.54.716 7.49 11.92 18.5 16.223 11.01 4.3 11.01 2.866 12.996 2.686 1.984-.18 6.406-2.6 7.312-5.107.9-2.513.9-4.664.63-5.112z"></path>
+                                                                                                                                                            </svg></span><span class="rrssb-text">Whatsapp</span></a></li>
+                    </ul>
+                    <!-- Buttons end here -->        </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form role="search">
+                        <div id="cheat-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" autocomplete="off" placeholder="Search cheats here" id="q" name="q"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="height: 20px; margin-bottom: 20px;">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-9609948936748481"
+                             data-ad-slot="7095929892"
+                             data-ad-format="link"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Sessions</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat  cmd" tcs="e595779b"><span class="noselect">$ </span>tmux</div><div class="cheat  cmd" tcs="e595779b"><span class="noselect">$ </span>tmux new</div><div class="cheat  cmd" tcs="e595779b"><span class="noselect">$ </span>tmux new-session</div><div class="cheat cmd tmuxcmd" tcs="e595779b"><span class="noselect">: </span>new</div><p class="cheat" tcs="e595779b">Start a new session</p><div class="cheat  cmd" tcs="3441f6f6"><span class="noselect">$ </span>tmux new -s mysession</div><div class="cheat cmd tmuxcmd" tcs="3441f6f6"><span class="noselect">: </span>new -s mysession</div><p class="cheat" tcs="3441f6f6">Start a new session with the name <i>mysession</i></p><div class="cheat  cmd" tcs="d4a3db2c"><span class="noselect">$ </span>tmux kill-ses -t mysession</div><div class="cheat  cmd" tcs="d4a3db2c"><span class="noselect">$ </span>tmux kill-session -t mysession</div><p class="cheat" tcs="d4a3db2c">kill/delete session <i>mysession</i></p><div class="cheat  cmd" tcs="cd4a6f59"><span class="noselect">$ </span>tmux kill-session -a</div><p class="cheat" tcs="cd4a6f59">kill/delete all sessions but the current</p><div class="cheat  cmd" tcs="d0f01fa6"><span class="noselect">$ </span>tmux kill-session -a -t mysession</div><p class="cheat" tcs="d0f01fa6">kill/delete all sessions but <i>mysession</i></p><div class="cheat shortcut" tcs="5b352506"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>$</kbd></div><p class="cheat" tcs="5b352506">Rename session</p><div class="cheat shortcut" tcs="33650188"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>d</kbd></div><p class="cheat" tcs="33650188">Detach from session</p><div class="cheat cmd tmuxcmd" tcs="74c38879"><span class="noselect">: </span>attach -d</div><p class="cheat" tcs="74c38879">Detach others on the session (Maximize window by detach other clients)</p></div><div class="col-md-6"><div class="cheat  cmd" tcs="a0ca8bf5"><span class="noselect">$ </span>tmux ls</div><div class="cheat  cmd" tcs="a0ca8bf5"><span class="noselect">$ </span>tmux list-sessions</div><div class="cheat shortcut" tcs="a0ca8bf5"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>s</kbd></div><p class="cheat" tcs="a0ca8bf5">Show all sessions</p><div class="cheat  cmd" tcs="06dae412"><span class="noselect">$ </span>tmux a</div><div class="cheat  cmd" tcs="06dae412"><span class="noselect">$ </span>tmux at</div><div class="cheat  cmd" tcs="06dae412"><span class="noselect">$ </span>tmux attach</div><div class="cheat  cmd" tcs="06dae412"><span class="noselect">$ </span>tmux attach-session</div><p class="cheat" tcs="06dae412">Attach to last session</p><div class="cheat  cmd" tcs="cdbbbe0b"><span class="noselect">$ </span>tmux a -t mysession</div><div class="cheat  cmd" tcs="cdbbbe0b"><span class="noselect">$ </span>tmux at -t mysession</div><div class="cheat  cmd" tcs="cdbbbe0b"><span class="noselect">$ </span>tmux attach -t mysession</div><div class="cheat  cmd" tcs="cdbbbe0b"><span class="noselect">$ </span>tmux attach-session -t mysession</div><p class="cheat" tcs="cdbbbe0b">Attach to a session with the name <i>mysession</i></p><div class="cheat shortcut" tcs="a041fa14"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>(</kbd></div><p class="cheat" tcs="a041fa14">Move to previous session</p><div class="cheat shortcut" tcs="cb250325"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>)</kbd></div><p class="cheat" tcs="cb250325">Move to next session</p></div></div>    <div class="row">
+                <div class="col-md-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9609948936748481"
+                         data-ad-slot="4156456698"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>    <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Windows</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat  cmd" tcs="4209c136"><span class="noselect">$ </span>tmux new -s mysession -n mywindow</div><p class="cheat" tcs="4209c136">start a new session with the name <i>mysession</i> and window <i>mywindow</i></p><div class="cheat shortcut" tcs="07476f71"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>c</kbd></div><p class="cheat" tcs="07476f71">Create window</p><div class="cheat shortcut" tcs="1d525ac4"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>,</kbd></div><p class="cheat" tcs="1d525ac4">Rename current window</p><div class="cheat shortcut" tcs="18ed4612"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>&</kbd></div><p class="cheat" tcs="18ed4612">Close current window</p><div class="cheat shortcut" tcs="11569f94"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>p</kbd></div><p class="cheat" tcs="11569f94">Previous window</p></div><div class="col-md-6"><div class="cheat shortcut" tcs="9849dfbe"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>n</kbd></div><p class="cheat" tcs="9849dfbe">Next window</p><div class="cheat shortcut" tcs="7995714c"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>0</kbd> ... <kbd>9</kbd></div><p class="cheat" tcs="7995714c">Switch/select window by number</p><div class="cheat cmd tmuxcmd" tcs="0af11a17"><span class="noselect">: </span>swap-window -s 2 -t 1</div><p class="cheat" tcs="0af11a17">Reorder window, swap window number 2(src) and 1(dst)</p><div class="cheat cmd tmuxcmd" tcs="c2241854"><span class="noselect">: </span>swap-window -t -1</div><p class="cheat" tcs="c2241854">Move current window to the left by one position</p></div></div>    <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Panes</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat shortcut" tcs="401b1d9f"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>;</kbd></div><p class="cheat" tcs="401b1d9f">Toggle last active pane</p><div class="cheat shortcut" tcs="7899c47a"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>%</kbd></div><p class="cheat" tcs="7899c47a">Split pane vertically</p><div class="cheat shortcut" tcs="11aed18f"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>"</kbd></div><p class="cheat" tcs="11aed18f">Split pane horizontally</p><div class="cheat shortcut" tcs="5259967c"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>{</kbd></div><p class="cheat" tcs="5259967c">Move the current pane left</p><div class="cheat shortcut" tcs="e8d90314"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>}</kbd></div><p class="cheat" tcs="e8d90314">Move the current pane right</p><div class="cheat shortcut" tcs="353793b8"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd><i class="fa fa-long-arrow-up"></i></kbd></div><div class="cheat shortcut" tcs="353793b8"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd><i class="fa fa-long-arrow-down"></i></kbd></div><div class="cheat shortcut" tcs="353793b8"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd><i class="fa fa-long-arrow-right"></i></kbd></div><div class="cheat shortcut" tcs="353793b8"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd><i class="fa fa-long-arrow-left"></i></kbd></div><p class="cheat" tcs="353793b8">Switch to pane to the direction</p><div class="cheat cmd tmuxcmd" tcs="dcebd6c9"><span class="noselect">: </span>setw synchronize-panes</div><p class="cheat" tcs="dcebd6c9">Toggle synchronize-panes(send command to all panes)</p><div class="cheat shortcut" tcs="cc6073cd"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>Spacebar</kbd></div><p class="cheat" tcs="cc6073cd">Toggle between pane layouts</p><div class="cheat shortcut" tcs="27cd8aef"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>o</kbd></div><p class="cheat" tcs="27cd8aef">Switch to next pane</p></div><div class="col-md-6"><div class="cheat shortcut" tcs="01335f0b"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>q</kbd></div><p class="cheat" tcs="01335f0b">Show pane numbers</p><div class="cheat shortcut" tcs="39eb3e75"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span><span class="kbd-margin"><kbd>q</kbd> </span><kbd>0</kbd> ... <kbd>9</kbd></div><p class="cheat" tcs="39eb3e75">Switch/select pane by number</p><div class="cheat shortcut" tcs="f18cb01c"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>z</kbd></div><p class="cheat" tcs="f18cb01c">Toggle pane zoom</p><div class="cheat shortcut" tcs="1c102d89"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>!</kbd></div><p class="cheat" tcs="1c102d89">Convert pane into a window</p><div class="cheat shortcut" tcs="1cccbc19"><span class="prefix" style="margin-right:0"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> + <kbd><i class="fa fa-long-arrow-up"></i></kbd></div><div class="cheat shortcut" tcs="1cccbc19"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>Ctrl</kbd> + <kbd><i class="fa fa-long-arrow-up"></i></kbd></div><div class="cheat shortcut" tcs="1cccbc19"><span class="prefix" style="margin-right:0"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> + <kbd><i class="fa fa-long-arrow-down"></i></kbd></div><div class="cheat shortcut" tcs="1cccbc19"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>Ctrl</kbd> + <kbd><i class="fa fa-long-arrow-down"></i></kbd></div><p class="cheat" tcs="1cccbc19">Resize current pane height(holding second key is optional)</p><div class="cheat shortcut" tcs="672f30c0"><span class="prefix" style="margin-right:0"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> + <kbd><i class="fa fa-long-arrow-right"></i></kbd></div><div class="cheat shortcut" tcs="672f30c0"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>Ctrl</kbd> + <kbd><i class="fa fa-long-arrow-right"></i></kbd></div><div class="cheat shortcut" tcs="672f30c0"><span class="prefix" style="margin-right:0"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> + <kbd><i class="fa fa-long-arrow-left"></i></kbd></div><div class="cheat shortcut" tcs="672f30c0"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>Ctrl</kbd> + <kbd><i class="fa fa-long-arrow-left"></i></kbd></div><p class="cheat" tcs="672f30c0">Resize current pane width(holding second key is optional)</p><div class="cheat shortcut" tcs="d23a6791"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>x</kbd></div><p class="cheat" tcs="d23a6791">Close current pane</p></div></div>    <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Copy Mode</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat cmd tmuxcmd" tcs="6760c67e"><span class="noselect">: </span>setw -g mode-keys vi</div><p class="cheat" tcs="6760c67e">use vi keys in buffer</p><div class="cheat shortcut" tcs="31de0710"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>[</kbd></div><p class="cheat" tcs="31de0710">Enter copy mode</p><div class="cheat shortcut" tcs="b7766f76"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>PgUp</kbd></div><p class="cheat" tcs="b7766f76">Enter copy mode and scroll one page up</p><div class="cheat shortcut" tcs="8823da0f"><kbd>q</kbd></div><p class="cheat" tcs="8823da0f">Quit mode</p><div class="cheat shortcut" tcs="a8a3fbc3"><kbd>g</kbd></div><p class="cheat" tcs="a8a3fbc3">Go to top line</p><div class="cheat shortcut" tcs="81316c2a"><kbd>G</kbd></div><p class="cheat" tcs="81316c2a">Go to bottom line</p><div class="cheat shortcut" tcs="1c59042f"><kbd><i class="fa fa-long-arrow-up"></i></kbd></div><p class="cheat" tcs="1c59042f">Scroll up</p><div class="cheat shortcut" tcs="95394867"><kbd><i class="fa fa-long-arrow-down"></i></kbd></div><p class="cheat" tcs="95394867">Scroll down</p><div class="cheat shortcut" tcs="0c8a86e2"><kbd>h</kbd></div><p class="cheat" tcs="0c8a86e2">Move cursor left</p><div class="cheat shortcut" tcs="5d53b95f"><kbd>j</kbd></div><p class="cheat" tcs="5d53b95f">Move cursor down</p><div class="cheat shortcut" tcs="8b0df978"><kbd>k</kbd></div><p class="cheat" tcs="8b0df978">Move cursor up</p><div class="cheat shortcut" tcs="1f90394d"><kbd>l</kbd></div><p class="cheat" tcs="1f90394d">Move cursor right</p><div class="cheat shortcut" tcs="2c55dd92"><kbd>w</kbd></div><p class="cheat" tcs="2c55dd92">Move cursor forward one word at a time</p><div class="cheat shortcut" tcs="4ab84961"><kbd>b</kbd></div><p class="cheat" tcs="4ab84961">Move cursor backward one word at a time</p></div><div class="col-md-6"><div class="cheat shortcut" tcs="7f4e94bf"><kbd>/</kbd></div><p class="cheat" tcs="7f4e94bf">Search forward</p><div class="cheat shortcut" tcs="bd976ea2"><kbd>?</kbd></div><p class="cheat" tcs="bd976ea2">Search backward</p><div class="cheat shortcut" tcs="65b357ab"><kbd>n</kbd></div><p class="cheat" tcs="65b357ab">Next keyword occurance</p><div class="cheat shortcut" tcs="e41933e9"><kbd>N</kbd></div><p class="cheat" tcs="e41933e9">Previous keyword occurance</p><div class="cheat shortcut" tcs="b37413b6"><kbd>Spacebar</kbd></div><p class="cheat" tcs="b37413b6">Start selection</p><div class="cheat shortcut" tcs="912bcc43"><kbd>Esc</kbd></div><p class="cheat" tcs="912bcc43">Clear selection</p><div class="cheat shortcut" tcs="b13dd57e"><kbd>Enter</kbd></div><p class="cheat" tcs="b13dd57e">Copy selection</p><div class="cheat shortcut" tcs="af698827"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>]</kbd></div><p class="cheat" tcs="af698827">Paste contents of buffer_0</p><div class="cheat cmd tmuxcmd" tcs="e5f0bbea"><span class="noselect">: </span>show-buffer</div><p class="cheat" tcs="e5f0bbea">display buffer_0 contents</p><div class="cheat cmd tmuxcmd" tcs="0f982cfe"><span class="noselect">: </span>capture-pane</div><p class="cheat" tcs="0f982cfe">copy entire visible contents of pane to a buffer</p><div class="cheat cmd tmuxcmd" tcs="78f702a9"><span class="noselect">: </span>list-buffers</div><p class="cheat" tcs="78f702a9">Show all buffers</p><div class="cheat cmd tmuxcmd" tcs="29861618"><span class="noselect">: </span>choose-buffer</div><p class="cheat" tcs="29861618">Show all buffers and paste selected</p><div class="cheat cmd tmuxcmd" tcs="52b3dd3f"><span class="noselect">: </span>save-buffer buf.txt</div><p class="cheat" tcs="52b3dd3f">Save buffer contents to <i>buf.txt</i></p><div class="cheat cmd tmuxcmd" tcs="f5b0ce70"><span class="noselect">: </span>delete-buffer -b 1</div><p class="cheat" tcs="f5b0ce70">delete buffer_1</p></div></div>    <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Misc</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat shortcut" tcs="2f3b1140"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>:</kbd></div><p class="cheat" tcs="2f3b1140">Enter command mode</p><div class="cheat cmd tmuxcmd" tcs="5a55ea0b"><span class="noselect">: </span>set -g OPTION</div><p class="cheat" tcs="5a55ea0b">Set OPTION for all sessions</p></div><div class="col-md-6"><div class="cheat cmd tmuxcmd" tcs="9fa0335f"><span class="noselect">: </span>setw -g OPTION</div><p class="cheat" tcs="9fa0335f">Set OPTION for all windows</p></div></div>    <div class="row category">
+                <div class="col-md-12">
+                    <h2 class="bg-info">Help</h2>
+                </div>
+            </div><div class="row cheatsheet"><div class="col-md-6"><div class="cheat  cmd" tcs="4f44313c"><span class="noselect">$ </span>tmux info</div><p class="cheat" tcs="4f44313c">Show every session, window, pane, etc...</p></div><div class="col-md-6"><div class="cheat shortcut" tcs="6e365cc4"><span class="prefix"><kbd>Ctrl</kbd> + <kbd>b</kbd> </span> <kbd>?</kbd></div><p class="cheat" tcs="6e365cc4">Show shortcuts</p></div></div>        <div class="row">
+                <div class="col-md-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9609948936748481"
+                         data-ad-slot="1063389498"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+
+
+            <div class="row" id="cheats">
+                <div class="col-md-12">
+                </div>
+            </div>
+
+        </div>
+        <!-- /container -->
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="js/ie10-viewport-bug-workaround.js"></script>
+        <script src="/js/rrssb.min.js"></script>
+
+        <script>
+            cheatsearch.init("GA0F6UVZV2", "a0f356331c82327570020af582efa8a4", "tmux_cheats");
+cheatsearch.confWidgets(function(){});
+cheatsearch.search.start();
+        </script>
+    </body>
+</html>
