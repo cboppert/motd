@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-TMUX_TIPS[0]="SomeTipHere\n"
 TMUX_TIPS[1]=$(cat <<-END
     Topic: Sessions
     Terminal
@@ -11,5 +10,3 @@ TMUX_TIPS[1]=$(cat <<-END
     Description:\n
 END
 )
-
-
