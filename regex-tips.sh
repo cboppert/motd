@@ -170,6 +170,8 @@ REGEX_TIPS[15]="""
 REGEX
 
 REGEX in ViM
+
+Search - Basic Regex
 """
 
 REGEX_TIPS[15]="""

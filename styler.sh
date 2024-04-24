@@ -15,7 +15,7 @@
 ##############################
 # Given message
 #  Print empty line
-#  For
+#  TODO - If we want to add some styles to these messages beyond the basic spacing, headers and category titles - https://misc.flogisoft.com/bash/tip_colors_and_formatting
 ##############################
 
 
